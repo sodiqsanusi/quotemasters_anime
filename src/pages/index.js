@@ -1,8 +1,44 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 export default function Home() {
+
+  const apiUrl = "https://waifu.it/api/v4/quote";
+
+  const getQuote = () => {
+    setLoading(true);
+    setData(null);
+    setError(false);
+    axios.get(apiUrl, {
+      headers: {
+        "Authorization": process.env.NEXT_PUBLIC_AUTH_KEY,
+      }
+    }).then(res => {
+      const quote = res.data;
+      setData(quote);
+      console.log(quote)
+      setLoading(false);
+    })
+    .catch(err => {
+      setLoading(false);
+      setError(true);
+      console.log(err, err.message);
+    })
+  }
+
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getQuote();
+    console.log("I should fire once");
+  }, []);
+
+
   return (
     <>
       <Head>
@@ -25,7 +61,9 @@ export default function Home() {
             Aspernatur quibusdam eius aut sit voluptatem ad voluptatibus officia. Quod, iste deleniti?</p>
         </div>
         <div>
-
+          {isLoading ? <div>Loading...</div> : ""}
+          {data ? <div>{data.quote}</div> : ""}
+          {isError ? <div>Error generating quote, regenerate</div> : ""}
         </div>
         <div>
           <button>
