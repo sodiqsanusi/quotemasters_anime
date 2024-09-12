@@ -56,10 +56,15 @@ export default function Home() {
       </Head>
       <div className={styles.page}>
         <div>
-          <h1>Anime Quote Generator</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Ab reprehenderit explicabo laboriosam perferendis dicta similique veritatis nam recusandae.
-            Aspernatur quibusdam eius aut sit voluptatem ad voluptatibus officia. Quod, iste deleniti?</p>
+          <h1>QuoteMaster: Anime Edition</h1>
+          <p>
+            From the epic adventures of the amazing One Piece to following up with Eren
+            in Attack on Titan, our favourites animes have been full of interesting
+            &#40;and sometimes educative&#41; wisdom in form of quotes from different characters.
+            <br /> 
+            This app brings that wisdom to life by delivering amazing quotes from a wide
+            range of anime series, with the possibility of creating a shareable image to capture the moment.
+          </p>
         </div>
         <div>
           {isLoading ? <Loader /> : ""}
@@ -69,11 +74,11 @@ export default function Home() {
         <div>
           <button onClick={getQuote}>
             <span></span>
-            <p>Generate</p>
+            <p>Generate New Quote</p>
           </button>
           <button>
             <span></span>
-            <p>Download</p>
+            <p>Download as Image</p>
           </button>
         </div>
       </div>
