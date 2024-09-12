@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "@/components/Loader";
+import Quote from "@/components/Quote";
 
 
 export default function Home() {
@@ -35,7 +37,6 @@ export default function Home() {
 
   useEffect(() => {
     getQuote();
-    console.log("I should fire once");
   }, []);
 
 
@@ -61,12 +62,12 @@ export default function Home() {
             Aspernatur quibusdam eius aut sit voluptatem ad voluptatibus officia. Quod, iste deleniti?</p>
         </div>
         <div>
-          {isLoading ? <div>Loading...</div> : ""}
-          {data ? <div>{data.quote}</div> : ""}
+          {isLoading ? <Loader /> : ""}
+          {data ? <Quote quoteDetails={data}/> : ""}
           {isError ? <div>Error generating quote, regenerate</div> : ""}
         </div>
         <div>
-          <button>
+          <button onClick={getQuote}>
             <span></span>
             <p>Generate</p>
           </button>
