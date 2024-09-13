@@ -11,6 +11,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 export default function Home() {
 
   const apiUrl = "https://waifu.it/api/v4/quote";
+  const presentYear = new Date().getFullYear();
 
   const getQuote = () => {
     setLoading(true);
@@ -23,7 +24,6 @@ export default function Home() {
     }).then(res => {
       const quote = res.data;
       setData(quote);
-      console.log(quote)
       setLoading(false);
     })
     .catch(err => {
@@ -31,6 +31,11 @@ export default function Home() {
       setError(true);
       console.log(err, err.message);
     })
+  }
+
+  const handleClick = () => {
+    if (isLoading) return;
+    getQuote();
   }
 
   const [isLoading, setLoading] = useState(false);
@@ -56,7 +61,7 @@ export default function Home() {
         <meta name="author" content='Sodiq "Ade" Sanusi' />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.page}>
+      <main className={styles.page}>
         <div className={styles.intro}>
           <h1>QuoteMaster: Anime Edition</h1>
           <p>
@@ -71,7 +76,7 @@ export default function Home() {
           {isError ? <div>Error generating quote, regenerate</div> : ""}
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.generateBtn} onClick={getQuote}>
+          <button className={styles.generateBtn} onClick={handleClick}>
             <GiStarShuriken />
             <p>Generate New Quote</p>
           </button>
@@ -80,7 +85,23 @@ export default function Home() {
             <p>Download as Image</p>
           </button>
         </div>
-      </div>
+      </main>
+      <footer className={styles.footer}>
+        <p>
+          Built by {" "}
+          <a href="https://github.com/sodiqsanusi" target="_blank" rel="noreferrer">
+            Sodiq &#34;Ade&#34; Sanusi
+          </a>
+        </p>
+        <p>
+          Designed by {" "}
+          <a href="https://www.mide.design" target="_blank" rel="noreferrer">
+            Mide
+          </a>
+        </p>
+        <br />
+        <p>&#169; {presentYear}</p>
+      </footer>
     </>
   );
 }

@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import { Instrument_Serif, Instrument_Sans } from "next/font/google";
 
 const instrumentSans = Instrument_Sans({
-  weight: ["400", "600"],
+  weight: ["400", "500","600"],
   subsets: ["latin"]
 })
 
