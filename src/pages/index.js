@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "@/components/Loader";
 import Quote from "@/components/Quote";
+import { GiStarShuriken } from "react-icons/gi";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 
 export default function Home() {
@@ -55,29 +57,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.page}>
-        <div>
+        <div className={styles.intro}>
           <h1>QuoteMaster: Anime Edition</h1>
           <p>
-            From the epic adventures of the amazing One Piece to following up with Eren
-            in Attack on Titan, our favourites animes have been full of interesting
-            &#40;and sometimes educative&#41; wisdom in form of quotes from different characters.
-            <br /> 
-            This app brings that wisdom to life by delivering amazing quotes from a wide
-            range of anime series, with the possibility of creating a shareable image to capture the moment.
+            Discover inspiration and wisdom from your favorite anime characters with Quotemaster.
+            Whether you&apos;re looking for motivation, a laugh, or a deep thought, each click brings
+            you a memorable quote from the world of anime.
           </p>
         </div>
-        <div>
+        <div className={styles.mainContainer}>
           {isLoading ? <Loader /> : ""}
           {data ? <Quote quoteDetails={data}/> : ""}
           {isError ? <div>Error generating quote, regenerate</div> : ""}
         </div>
-        <div>
-          <button onClick={getQuote}>
-            <span></span>
+        <div className={styles.buttonContainer}>
+          <button className={styles.generateBtn} onClick={getQuote}>
+            <GiStarShuriken />
             <p>Generate New Quote</p>
           </button>
-          <button>
-            <span></span>
+          <button className={styles.downloadBtn}>
+            <MdOutlineFileDownload />
             <p>Download as Image</p>
           </button>
         </div>
