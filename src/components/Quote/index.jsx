@@ -2,7 +2,7 @@ import styles from "./Quote.module.css";
 
 const Quote = ({quoteDetails, innerRef}) => {
   return (
-    <div ref={innerRef}>
+    <div ref={innerRef} className={styles.quoteContainer}>
       <h2>
         {/* &#10077; */}
         {quoteDetails.quote} {" "}

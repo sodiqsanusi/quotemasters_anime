@@ -50,10 +50,13 @@ export default function Home() {
 
     const imageData = canvas.toDataURL('image/jpg');
     const link = document.createElement('a');
+    let imageName = data.author.split(" ");
+    imageName.push(data._id);
+    imageName = imageName.join("_") + ".jpg";
 
     if (typeof link.download === 'string') {
       link.href = imageData;
-      link.download = 'image.jpg';
+      link.download = imageName;
 
       document.body.appendChild(link);
       link.click();
