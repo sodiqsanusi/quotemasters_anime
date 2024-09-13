@@ -1,0 +1,9 @@
+.quoteContainer {
+  border-radius: 6px;
+  padding: 2em 1em;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  row-gap: 1em;
+}

@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
         html {
           font-family: ${instrumentSans.style.fontFamily};
         }
-        h1 {
+        h1, h2 {
           font-family: ${instrumentSerif.style.fontFamily};
         }
       `}</style>

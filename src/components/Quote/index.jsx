@@ -3,15 +3,11 @@ import styles from "./Quote.module.css";
 const Quote = ({quoteDetails, innerRef}) => {
   return (
     <div ref={innerRef} className={styles.quoteContainer}>
-      <h2>
-        {/* &#10077; */}
-        {quoteDetails.quote} {" "}
-        {/* &#10078;   */}
+      <h2 className={styles.mainQuote}>
+        {quoteDetails.quote}
       </h2>
-      <div>
-        <span>{quoteDetails.author}</span>
-        <hr />
-        <span>{quoteDetails.anime}</span>
+      <div className={styles.quoteOrigin}>
+        <p>~ {quoteDetails.author} ({quoteDetails.anime})</p>
       </div>
     </div>
   );

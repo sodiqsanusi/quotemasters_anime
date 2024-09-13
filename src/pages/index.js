@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   const handleGenerate = () => {
-    if (!data) return;
+    if (!data && !isError) return;
     getQuote();
   }
 
