@@ -1,17 +1,22 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "@/components/Loader";
 import Quote from "@/components/Quote";
 import { GiStarShuriken } from "react-icons/gi";
 import { MdOutlineFileDownload } from "react-icons/md";
+import html2canvas from "html2canvas";
 
 
 export default function Home() {
 
   const apiUrl = "https://waifu.it/api/v4/quote";
   const presentYear = new Date().getFullYear();
+  const printRef = React.useRef();
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+  const [data, setData] = useState(null);
 
   const getQuote = () => {
     setLoading(true);
@@ -33,14 +38,30 @@ export default function Home() {
     })
   }
 
-  const handleClick = () => {
-    if (isLoading) return;
+  const handleGenerate = () => {
+    if (!data) return;
     getQuote();
   }
 
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
-  const [data, setData] = useState(null);
+  const handleDownload = async () => {
+    if (!data) return;
+    const element = printRef.current;
+    const canvas = await html2canvas(element);
+
+    const imageData = canvas.toDataURL('image/jpg');
+    const link = document.createElement('a');
+
+    if (typeof link.download === 'string') {
+      link.href = imageData;
+      link.download = 'image.jpg';
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(imageData);
+    }
+  }
 
   useEffect(() => {
     getQuote();
@@ -72,15 +93,15 @@ export default function Home() {
         </div>
         <div className={styles.mainContainer}>
           {isLoading ? <Loader /> : ""}
-          {data ? <Quote quoteDetails={data}/> : ""}
+          {data ? <Quote innerRef={printRef} quoteDetails={data}/> : ""}
           {isError ? <div>Error generating quote, regenerate</div> : ""}
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.generateBtn} onClick={handleClick}>
+          <button className={styles.generateBtn} onClick={handleGenerate}>
             <GiStarShuriken />
             <p>Generate New Quote</p>
           </button>
-          <button className={styles.downloadBtn}>
+          <button className={styles.downloadBtn} onClick={handleDownload}>
             <MdOutlineFileDownload />
             <p>Download as Image</p>
           </button>

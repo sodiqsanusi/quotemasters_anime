@@ -1,8 +1,8 @@
 import styles from "./Quote.module.css";
 
-const Quote = ({quoteDetails}) => {
+const Quote = ({quoteDetails, innerRef}) => {
   return (
-    <div>
+    <div ref={innerRef}>
       <h2>
         {/* &#10077; */}
         {quoteDetails.quote} {" "}
