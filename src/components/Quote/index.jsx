@@ -7,7 +7,7 @@ const Quote = ({quoteDetails, innerRef}) => {
         {quoteDetails.quote}
       </h2>
       <div className={styles.quoteOrigin}>
-        <p>~ {quoteDetails.author} ({quoteDetails.anime})</p>
+        <p>~ {quoteDetails.character} ({quoteDetails.anime})</p>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import html2canvas from "html2canvas";
 
 export default function Home() {
 
-  const apiUrl = "https://waifu.it/api/v4/quote";
+  const apiUrl = process.env.NEXT_PUBLIC_API;
   const presentYear = new Date().getFullYear();
   const printRef = React.useRef();
   const [isLoading, setLoading] = useState(false);
@@ -22,11 +22,7 @@ export default function Home() {
     setLoading(true);
     setData(null);
     setError(false);
-    axios.get(apiUrl, {
-      headers: {
-        "Authorization": process.env.NEXT_PUBLIC_AUTH_KEY,
-      }
-    }).then(res => {
+    axios.get(apiUrl).then(res => {
       const quote = res.data;
       setData(quote);
       setLoading(false);
@@ -50,8 +46,8 @@ export default function Home() {
 
     const imageData = canvas.toDataURL('image/jpg');
     const link = document.createElement('a');
-    let imageName = data.author.split(" ");
-    imageName.push(data._id);
+    let imageName = data.character.split(" ");
+    imageName.push(data.id);
     imageName = imageName.join("_") + ".jpg";
 
     if (typeof link.download === 'string') {
