@@ -1,9 +1,9 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Loader from "@/components/Loader";
-import Quote from "@/components/Quote";
+import Loader from "../components/Loader";
+import Quote from "../components/Quote";
 import { GiStarShuriken } from "react-icons/gi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import html2canvas from "html2canvas";
