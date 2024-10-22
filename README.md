@@ -1,40 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QuoteMaster: Anime Edition - Web App
 
-## Getting Started
+**QuoteMaster: Anime Edition** is a web platform designed to entertain anime fans by displaying random memorable quotes from their favorite characters. Users can generate new quotes and easily share or download them as stylized images, providing a fun and interactive way for anime enthusiasts to enjoy and share their favorite moments.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Random Anime Quotes**: Discover a new anime quote each time you load the app.
+  
+- **Downloadable Quotes**: Easily save your favorite quotes as images to share with friends or use as wallpapers.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation and Setup
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To run **QuoteMaster: Anime Edition** locally, follow these steps:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/sodiqsanusi/quotemasters_anime.git
+    ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+2. Navigate into the project directory:
+    ```bash
+    cd quotemasters_anime
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-## Learn More
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+5. Open `http://localhost:3000` in your browser to use the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technical Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**QuoteMaster: Anime Edition** is built using **Next.js** with a focus on client-side rendering, enabling smooth and fast performance. The app integrates with a custom-built API to provide anime quotes and offers dynamic image generation for easy sharing and downloading.
 
-## Deploy on Vercel
+### Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js**: Chosen for fast performance and effective client-side rendering, ensuring a seamless user experience.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Axios**: Used to handle data fetching from the API, simplifying API integration.
+  
+- **html2canvas**: Converts DOM elements into images, allowing users to download quotes as personalized images.
+  
+- **Google Spreadsheet (using App Scripts)**: Hosts the quote dataset and acts as a lightweight backend solution.
+
+### Challenges
+
+- **API Limitations**: Encountered rate limits and CORS issues with public APIs, which led to the creation of a custom API.
+- **Image Generation**: Implemented dynamic image generation using **html2canvas** to allow users to download quotes as images.
+
+### Lessons Learned
+
+- **API Development**: Built an API off a Kaggle dataset (which I had to clean using the Python [Pandas library](https://pandas.pydata.org/)) when public APIs proved insufficient due to rate limits.
+- **Frontend Focus**: This project reaffirmed my interest in frontend development, particularly in building user interfaces over backend management.
+
+## Next Steps
+
+- **Design Upgrades**: Working on improving the design for a more user-friendly experience.
+  
+- **New Features**:
+  - Adding a "Copy Quote" functionality for easier sharing.
+  - Further refining the image generation process to improve performance and compatibility across devices.
+
+## Contribution
+
+Contributions to **QuoteMaster: Anime Edition** are welcome! To contribute:
+
+1. Fork the repository.
+  
+2. Create a new branch (`git checkout -b feature-branch`).
+  
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+  
+4. Push to the branch (`git push origin feature-branch`).
+  
+5. Open a Pull Request.
+
+For major changes, please open an issue first to discuss your proposed modifications.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Connect with Us
+
+- **Project Lead**: Sodiq "Ade" Sanusi - [GitHub](https://github.com/sodiqsanusi) | [LinkedIn](https://www.linkedin.com/in/sodiqsanusi)
+  
+## Links
+
+- **GitHub Repository**: [QuoteMaster: Anime Edition](https://github.com/sodiqsanusi/quotemasters_anime)
+- **Live Demo**: [https://quotemaster-anime.netlify.app/](https://quotemaster-anime.netlify.app/)
+- **Kaggle Dataset**: [Link to Dataset](https://www.kaggle.com/datasets/mahendrasinghrajpoot/anime-quotes-dataset)
